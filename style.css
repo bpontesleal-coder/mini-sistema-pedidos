@@ -1,54 +1,218 @@
-body {
-  font-family: Arial;
-  background-color: #f4f6f8;
-  margin: 0;
-  padding: 20px;
+:root {
+  --verde: #2E7D32;
+  --verde-escuro: #1B5E20;
+  --fundo: #F4F6F8;
+  --texto: #1F2933;
+  --cinza: #616E7C;
+  --borda: #E1E5EA;
+  --vermelho: #C62828;
 }
 
-h1 {
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 24px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--texto);
+  background-color: var(--fundo);
+}
+
+h1, h2, h3 {
+  margin: 0;
+}
+
+.topo {
+  max-width: 1000px;
+  margin: 0 auto 28px;
   text-align: center;
 }
 
-#produtos {
+.topo h1 {
+  font-size: 32px;
+}
+
+.topo p {
+  margin: 8px 0 0;
+  color: var(--cinza);
+}
+
+.loja {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 24px;
+  align-items: start;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.loja h2 {
+  margin-bottom: 16px;
+  font-size: 20px;
+}
+
+.produtos {
   display: flex;
-  gap: 20px;
   flex-wrap: wrap;
-  justify-content: center;
+  gap: 16px;
 }
 
 .produto {
+  flex: 1 1 180px;
+  padding: 20px;
+  text-align: center;
   background: white;
   border-radius: 10px;
-  padding: 15px;
-  width: 200px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
-button {
-  background-color: #4CAF50;
+.produto h3 {
+  font-size: 18px;
+}
+
+.preco {
+  margin: 8px 0 16px;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--verde);
+}
+
+.botao {
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
   color: white;
+  background-color: var(--verde);
   border: none;
-  padding: 8px;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #45a049;
+.botao:hover {
+  background-color: var(--verde-escuro);
 }
 
-ul {
-  list-style: none;
-  padding: 0;
+.botao-secundario {
+  margin-top: 12px;
+  color: var(--vermelho);
+  background: none;
+  border: 1px solid var(--borda);
 }
 
-li {
+.botao-secundario:hover {
+  background-color: #FDECEA;
+}
+
+button:focus-visible {
+  outline: 3px solid #90CAF9;
+  outline-offset: 2px;
+}
+
+.carrinho {
+  position: sticky;
+  top: 24px;
+  padding: 20px;
   background: white;
-  margin: 5px auto;
-  padding: 10px;
-  width: 300px;
-  border-radius: 8px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.contador {
+  display: inline-block;
+  min-width: 26px;
+  padding: 2px 8px;
+  margin-left: 6px;
+  font-size: 14px;
+  text-align: center;
+  color: white;
+  background-color: var(--verde);
+  border-radius: 999px;
+  vertical-align: middle;
+}
+
+.vazio {
+  margin: 0;
+  color: var(--cinza);
+}
+
+.itens {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--borda);
+}
+
+.item strong {
+  display: block;
+}
+
+.item span {
+  font-size: 14px;
+  color: var(--cinza);
+}
+
+.controles {
+  display: flex;
+  gap: 6px;
+}
+
+.botao-icone,
+.botao-remover {
+  padding: 6px 12px;
+  font-size: 14px;
+  background: white;
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.botao-icone {
+  min-width: 36px;
+  font-weight: bold;
+}
+
+.botao-remover {
+  margin-left: auto;
+  color: var(--vermelho);
+}
+
+.botao-icone:hover,
+.botao-remover:hover {
+  background-color: var(--fundo);
+}
+
+.resumo {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
+  margin-top: 16px;
+  font-size: 18px;
+}
+
+.resumo strong {
+  font-size: 24px;
+  color: var(--verde);
+}
+
+@media (max-width: 760px) {
+  body {
+    padding: 16px;
+  }
+
+  .loja {
+    grid-template-columns: 1fr;
+  }
+
+  .carrinho {
+    position: static;
+  }
 }
